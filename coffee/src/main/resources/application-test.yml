@@ -23,3 +23,7 @@ logging:
   level:
     org.hibernate.type.descriptor.sql: debug
     org.hibernate.SQL: debug
+
+server:
+  servlet:
+    context-path: /api/v1

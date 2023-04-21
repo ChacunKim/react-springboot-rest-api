@@ -54,7 +54,6 @@ public class SecurityConfig {
                     .accessDeniedHandler(accessDeniedHandler())
                     .and()
                 .csrf().disable()
-
         ;
     return http.build();
     }
