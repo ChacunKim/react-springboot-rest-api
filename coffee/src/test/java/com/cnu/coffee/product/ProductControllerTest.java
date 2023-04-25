@@ -78,7 +78,7 @@ class ProductControllerTest {
                 .build();
 
 
-        MvcResult result = mockMvc.perform(post("/api/v1/product")
+        MvcResult result = mockMvc.perform(post("/product")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(productRequestDTO)))
                 .andExpect(status().isOk())
@@ -93,7 +93,7 @@ class ProductControllerTest {
     @Test
     @DisplayName("상품 조회: 단건조회")
     void testFind() throws Exception {
-        mockMvc.perform(get("/api/v1/product/{id}", product.getId().toString()))
+        mockMvc.perform(get("/product/{id}", product.getId().toString()))
                 .andExpect(status().isOk())
                 .andDo(print());
 
@@ -112,7 +112,7 @@ class ProductControllerTest {
         productService.insertProduct(productRequestDTO);
 
 
-        mockMvc.perform(get("/api/v1/product/all"))
+        mockMvc.perform(get("/product/all"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
@@ -127,7 +127,7 @@ class ProductControllerTest {
                 .description(Optional.of("맛있는 커피 😊"))
                 .build();
 
-        MvcResult result = mockMvc.perform(put("/api/v1/product/{id}", product.getId().toString())
+        MvcResult result = mockMvc.perform(put("/product/{id}", product.getId().toString())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(productRequestDto)))
                 .andExpect(status().isOk())
@@ -153,7 +153,7 @@ class ProductControllerTest {
 
         ProductResponseDto productResponseDto = productService.insertProduct(productRequestDto);
 
-        mockMvc.perform(delete("/api/v1/product/{id}", productResponseDto.getId().toString()))
+        mockMvc.perform(delete("/product/{id}", productResponseDto.getId().toString()))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
@@ -171,7 +171,7 @@ class ProductControllerTest {
 
         logger.info("before delete all -> {}", productService.findAllProducts());
 
-        mockMvc.perform(delete("/api/v1/product/deleteAll"))
+        mockMvc.perform(delete("/product/deleteAll"))
                 .andExpect(status().isOk())
                 .andDo(print());
 
