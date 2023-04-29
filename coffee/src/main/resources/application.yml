@@ -9,7 +9,7 @@ spring:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     generate-ddl: true
     show-sql: true
     open-in-view: true
@@ -27,3 +27,12 @@ logging:
 server:
   servlet:
     context-path: /api/v1
+
+#auth0:
+#  audience: https://www.rgbCoffee.com/
+
+
+jwt:
+  issuer: https://www.rgbCoffee.com
+  client-secret: zj5vl8wlsWkakt1dlTdj
+  expiry-seconds: 10800
